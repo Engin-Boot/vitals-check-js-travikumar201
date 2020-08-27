@@ -13,5 +13,9 @@ function vitalsAreOk(bpm, spo2, respRate) {
 
 expect(vitalsAreOk(100, 95, 70)).to.be.true;
 expect(vitalsAreOk(50, 95, 70)).to.be.false;
+expect(vitalsAreOk(170, 95, 70)).to.be.false;
+expect(vitalsAreOk(80, 80, 70)).to.be.false;
+expect(vitalsAreOk(80, 95, 25)).to.be.false;
+expect(vitalsAreOk(80, 95, 100)).to.be.false;
 
 console.log('checker is done');
