@@ -1,7 +1,12 @@
 const expect = require('chai').expect;
 
 function checkBpm(bpm){
-    if(bpm < 70 || bpm > 150){
+    if(bpm < 70){
+        console.log(`Bpm is ` + bpm + `, which is less than 70`);
+        return false;
+    }
+    else if(bpm > 150){
+        console.log(`Bpm is ` + bpm + `, which is more than 150`);
         return false;
     }
     return true;
@@ -9,13 +14,19 @@ function checkBpm(bpm){
 
 function checkSpo2(spo2){
     if(spo2 < 90){
+        console.log(`Spo2 is ` + spo2 + `, which is less than 90`);
         return false;
     }
     return true;
 }
 
 function checkRespRate(respRate){
-    if(respRate < 30 || respRate > 95) {
+    if(respRate < 30) {
+        console.log(`Respiration rate is ` + respRate + `, which is less than 30`);
+        return false;
+    }
+    else if(respRate > 95){
+        console.log(`Respiration rate is ` + respRate + `, which is more than 95`);
         return false;
     }
     return true;
