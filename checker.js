@@ -46,5 +46,11 @@ expect(doctor.vitalsAreOk(170, 95, 70)).to.be.false;
 expect(nurse.vitalsAreOk(80, 80, 70)).to.be.false;
 expect(nurse.vitalsAreOk(80, 95, 25)).to.be.false;
 expect(nurse.vitalsAreOk(80, 95, 100)).to.be.false;
+// checks for corner cases
+expect(nurse.vitalsAreOk(70, 95, 70)).to.be.true;
+expect(nurse.vitalsAreOk(150, 95, 70)).to.be.true;
+expect(doctor.vitalsAreOk(83,90,70)).to.be.true;
+expect(doctor.vitalsAreOk(92, 100, 30)).to.be.true;
+expect(doctor.vitalsAreOk(92, 100, 95)).to.be.true;
 
 console.log('checker is done');
