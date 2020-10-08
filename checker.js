@@ -1,17 +1,28 @@
 const expect = require('chai').expect;
+const checkRange = require('./check-range');
 
-function vitalsAreOk(bpm, spo2, respRate) {
-    if(bpm < 70 || bpm > 150) {
-        return false;
-    } else if(spo2 < 90) {
-        return false;
-    } else if(respRate < 30 || respRate > 95) {
-        return false;
-    }
-    return true;
+function checkBpm(){
+    let bpmIsInRange = checkRange.makeChecker(70, 150);
+    expect(bpmIsInRange("BPM", 100)).to.be.true;
+    expect(bpmIsInRange("BPM", 50)).to.be.false;
+    expect(bpmIsInRange("BPM", 170)).to.be.false;
 }
 
-expect(vitalsAreOk(100, 95, 70)).to.be.true;
-expect(vitalsAreOk(50, 95, 70)).to.be.false;
+function checkSpo2(){
+    let spo2IsInRange = checkRange.makeChecker(0, 90);
+    expect(spo2IsInRange("SPO2", 70)).to.be.true;
+    expect(spo2IsInRange("SPO2", -1)).to.be.false;
+    expect(spo2IsInRange("SPO2", 100)).to.be.false;
+}
 
+function checkRespRate(){
+    let respRateIsInRange = checkRange.makeChecker(30, 95);
+    expect(respRateIsInRange("Respiration Rate", 45)).to.be.true;
+    expect(respRateIsInRange("Respiration Rate", 23)).to.be.false;
+    expect(respRateIsInRange("Respiration Rate", 98)).to.be.false;
+}
+
+checkBpm();
+checkSpo2();
+checkRespRate();
 console.log('checker is done');
